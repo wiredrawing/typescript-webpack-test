@@ -1,5 +1,5 @@
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/index.ts",
   mode: "development",
 
   // webpackされたjavascript保存先
@@ -20,4 +20,34 @@ module.exports = {
     static: "public",
     open: true,
   },
+
+
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: "babel-loader",
+        options: {
+          presets: [
+            "@babel/preset-env",
+            // "@babel/preset-typescript"
+          ],
+        }
+      },
+      {
+        test: /\.ts$/,
+        use: "ts-loader",
+      },
+    ]
+  },
+  resolve: {
+    extensions: [
+      ".ts", ".js"
+    ]
+  },
+  devtool: "cheap-module-source-map",
+  target: [
+    "web",
+    "es5"
+  ]
 };
