@@ -26,17 +26,21 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        loader: "babel-loader",
-        options: {
-          presets: [
-            "@babel/preset-env",
-            // "@babel/preset-typescript"
-          ],
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              "@babel/preset-env",
+              // "@babel/preset-typescript"
+            ],
+          }
         }
       },
       {
         test: /\.ts$/,
-        use: "ts-loader",
+        use: {
+          loader: "ts-loader"
+        },
       },
     ]
   },
